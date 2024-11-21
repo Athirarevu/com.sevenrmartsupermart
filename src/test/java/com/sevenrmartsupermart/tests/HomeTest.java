@@ -32,8 +32,6 @@ public class HomeTest extends Base{
 		String text = subcategorypage.clickOnSubCategorySearchIcon();
 		System.out.println(text);
 		String expectedText = "List Sub Categories";
-		Assert.assertEquals(text, expectedText);
-		
-				
+		Assert.assertEquals(text, expectedText);			
 	}
 }
