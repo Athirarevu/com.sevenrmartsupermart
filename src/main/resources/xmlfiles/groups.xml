@@ -1,0 +1,17 @@
+<suite name="sevenrmartgrouprelease">
+	<listeners>
+		<listener class-name="com.sevenrmartsupermart.listeners.ExtentReporter"></listener>
+	</listeners>
+	<test name="logintestgrouping">
+	<groups>  
+      <run>  
+         <include name="smoke"/>  
+      </run>  
+   </groups>
+		<classes>
+			<class name="com.sevenrmartsupermart.tests.LoginTest"></class>
+			<class name="com.sevenrmartsupermart.tests.HomeTest"></class>
+			<class name="com.sevenrmartsupermart.tests.SubCategoryTest"></class>
+		</classes>
+	</test>
+</suite>
