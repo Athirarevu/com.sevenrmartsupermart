@@ -11,9 +11,9 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>selenium_basics</groupId>
-			<artifactId>selenium_basics</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.25.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -44,21 +44,6 @@
 			<groupId>com.github.javafaker</groupId>
 			<artifactId>javafaker</artifactId>
 			<version>1.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.obsquara</groupId>
-			<artifactId>MySelenium</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.obsquara</groupId>
-			<artifactId>MyMavenWorks</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>testNGBasics1</groupId>
-			<artifactId>testNGBasics1</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
