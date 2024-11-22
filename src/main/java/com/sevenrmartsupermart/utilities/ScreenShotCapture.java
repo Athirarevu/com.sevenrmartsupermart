@@ -28,5 +28,4 @@ public class ScreenShotCapture {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -63,12 +63,12 @@ public class SubCategoryPage {
 		SearchField.click();		
 	}
 	
-	public String SearchForSubcategoryByDataProvider(String category, String subCategory) {
+	public boolean SearchForSubcategoryByDataProvider(String category, String subCategory) {
 		clickOnSubCategorySearchIcon();
 		CategoryField.sendKeys(category);
 		subCategoryField.sendKeys(subCategory);
 		SearchField.click();
-		return pageNavigationField.getText();
+		return pageNavigationField.isDisplayed();
 	}
 		
 	public String getNoResultOutput(String category, String subCategory)

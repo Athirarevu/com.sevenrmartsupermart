@@ -22,7 +22,7 @@ public class HomeTest extends Base{
 		loginpage.login("admin","admin");
 	}
 	@Test
-	public void subCategoryVerification()
+	public void verifysubCategory()
 	{
 		loginpage= new LoginPage(driver);
 		homepage =new HomePage(driver);

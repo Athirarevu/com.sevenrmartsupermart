@@ -2,25 +2,16 @@ package com.sevenrmartsupermart.tests;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
-
-import static org.testng.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import com.sevenrmartsupermart.base.Base;
-import com.sevenrmartsupermart.constants.Constants;
 import com.sevenrmartsupermart.constants.Data_Provider;
 import com.sevenrmartsupermart.pages.HomePage;
 import com.sevenrmartsupermart.pages.LoginPage;
 import com.sevenrmartsupermart.pages.SubCategoryPage;
 import com.sevenrmartsupermart.utilities.GeneralUtility;
-import com.sevenrmartsupermart.utilities.ScreenShotCapture;
 
 public class SubCategoryTest extends Base {
 	LoginPage loginpage;
@@ -57,7 +48,6 @@ public class SubCategoryTest extends Base {
 		List<String> expectedResult = new ArrayList<String>();
 		expectedResult.add("Appliances");
 		AssertJUnit.assertEquals(subList, expectedResult);
-
 	}
 
 	@Test
@@ -86,8 +76,9 @@ public class SubCategoryTest extends Base {
 		loginpage.login();
 		homepage.clickOnSubCategory();
 		subcategorypage.clickOnSubCategorySearchIcon();
-		String page = subcategorypage.SearchForSubcategoryByDataProvider(category, subCategory);
-		System.out.println("page navigation " + page);
+		boolean pageNumber= subcategorypage.SearchForSubcategoryByDataProvider(category, subCategory);
+		Assert.assertEquals(pageNumber, true);
+
 	}
 
 	@Test
@@ -112,8 +103,7 @@ public class SubCategoryTest extends Base {
 		subcategorypage.clickOnSubCategorySearchIcon();
 		String message = subcategorypage.getInvalidSearchEntry("Electronics", "xxxyy");
 		System.out.println("Message Displayed is " + message);
-		Assert.assertEquals(message, ".........RESULT NOT FOUND.......");
-		
+		Assert.assertEquals(message, ".........RESULT NOT FOUND.......");		
 		String newlist = GeneralUtility.getRandomName();
 		System.out.println(newlist);
 	}
@@ -128,7 +118,6 @@ public class SubCategoryTest extends Base {
 		boolean status = subcategorypage.CheckResetIconIsEnabled();
 		// System.out.println("The status of Reset Icon is "+status);
 		Assert.assertTrue(status);
-
 	}
 
 	@Test
@@ -161,7 +150,6 @@ public class SubCategoryTest extends Base {
 		String fontSize = subcategorypage.getFontSizeOfNewButton();
 		// System.out.println(fontSize);
 		String expectedFontSize = "16px";
-
 		softassert.assertEquals(backgroudcolor, expectedbgcolor);
 		softassert.assertEquals(color, expectedcolor);
 		softassert.assertEquals(fontSize, expectedFontSize);
@@ -188,7 +176,6 @@ public class SubCategoryTest extends Base {
 		String fontSize = subcategorypage.getFontSizeOfSearchButton();
 		// System.out.println(fontSize);
 		String expectedFontSize = "16px";
-
 		softassert.assertEquals(backgroudcolor, expectedbgcolor);
 		softassert.assertEquals(color, expectedcolor);
 		softassert.assertEquals(fontSize, expectedFontSize);
@@ -215,12 +202,10 @@ public class SubCategoryTest extends Base {
 		String fontSize = subcategorypage.getFontSizeOfResetButton();
 		// System.out.println(fontSize);
 		String expectedFontSize = "16px";
-
 		softassert.assertEquals(backgroudcolor, expectedbgcolor);
 		softassert.assertEquals(color, expectedcolor);
 		softassert.assertEquals(fontSize, expectedFontSize);
 		softassert.assertEquals(fontStyle, expectedfontStyle);
 		softassert.assertAll();
 	}
-
 }
