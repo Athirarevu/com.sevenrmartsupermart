@@ -193,8 +193,5 @@ public class SubCategoryPage {
 		SearchField.click();
 		return statusField.getText();	
 	}
-	public void addNewSubCategory()
-	{
-		
-	}
+	
 }
