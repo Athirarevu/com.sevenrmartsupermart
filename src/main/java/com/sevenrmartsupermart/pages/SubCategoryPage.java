@@ -192,6 +192,7 @@ public class SubCategoryPage {
 		subCategoryField.sendKeys(subCategory);
 		SearchField.click();
 		return statusField.getText();	
+		
 	}
 	
 }
