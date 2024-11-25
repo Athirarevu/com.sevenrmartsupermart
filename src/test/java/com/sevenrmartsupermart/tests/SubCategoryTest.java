@@ -22,10 +22,9 @@ public class SubCategoryTest extends Base {
 	@Test
 	public void subCategoryPageVerification() {
 		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		subcategorypage = new SubCategoryPage(driver);
+		homepage = loginpage.login();
 		loginpage.login();
-		homepage.clickOnSubCategory();
+		subcategorypage = homepage.clickOnSubCategory();
 		String text = subcategorypage.clickOnSubCategorySearchIcon();
 		System.out.println(text);
 		String expectedText = "List Sub Categories";
@@ -76,7 +75,7 @@ public class SubCategoryTest extends Base {
 		loginpage.login();
 		homepage.clickOnSubCategory();
 		subcategorypage.clickOnSubCategorySearchIcon();
-		boolean pageNumber= subcategorypage.SearchForSubcategoryByDataProvider(category, subCategory);
+		boolean pageNumber = subcategorypage.SearchForSubcategoryByDataProvider(category, subCategory);
 		Assert.assertEquals(pageNumber, true);
 
 	}
@@ -103,7 +102,7 @@ public class SubCategoryTest extends Base {
 		subcategorypage.clickOnSubCategorySearchIcon();
 		String message = subcategorypage.getInvalidSearchEntry("Electronics", "xxxyy");
 		System.out.println("Message Displayed is " + message);
-		Assert.assertEquals(message, ".........RESULT NOT FOUND.......");		
+		Assert.assertEquals(message, ".........RESULT NOT FOUND.......");
 		String newlist = GeneralUtility.getRandomName();
 		System.out.println(newlist);
 	}
@@ -191,21 +190,34 @@ public class SubCategoryTest extends Base {
 		loginpage.login();
 		homepage.clickOnSubCategory();
 		String backgroudcolor = subcategorypage.getBackgroundColorOfResetIcon();
-		// System.out.println(backgroudcolor);
 		String expectedbgcolor = "rgba(255, 193, 7, 1)";
 		String color = subcategorypage.toCheckColorOfResetButton();
-		// System.out.println(color);
 		String expectedcolor = "rgba(31, 45, 61, 1)";
 		String fontStyle = subcategorypage.getFontStyleOfResetIcon();
-		// System.out.println(fontStyle);
 		String expectedfontStyle = "normal";
 		String fontSize = subcategorypage.getFontSizeOfResetButton();
-		// System.out.println(fontSize);
 		String expectedFontSize = "16px";
 		softassert.assertEquals(backgroudcolor, expectedbgcolor);
 		softassert.assertEquals(color, expectedcolor);
 		softassert.assertEquals(fontSize, expectedFontSize);
 		softassert.assertEquals(fontStyle, expectedfontStyle);
 		softassert.assertAll();
+	}
+
+	@Test
+	public void verifyStatusOfSerchResult() {
+		loginpage = new LoginPage(driver);
+		homepage = new HomePage(driver);
+		subcategorypage = new SubCategoryPage(driver);
+		loginpage.login();
+		subcategorypage = homepage.clickOnSubCategory();
+		subcategorypage.clickOnSubCategorySearchIcon();
+		String result = subcategorypage.getStatusOfSearchOutput("Grocery", "ChickenRasagulla");
+		System.out.println(result);
+		if (result == "Active") {
+			Assert.assertEquals(result, "Active");
+		} else {
+			Assert.assertEquals(result, "Inactive");
+		}
 	}
 }

@@ -33,7 +33,9 @@ public class SubCategoryPage {
 	@FindBy(xpath= "//h1[@class='m-0 text-dark']")
 	private WebElement headingField;
 	@FindBy(xpath="//nav[@aria-label='Page navigation']")
-	WebElement pageNavigationField;
+	private WebElement pageNavigationField;
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
+	private WebElement statusField;
 
 	public SubCategoryPage(WebDriver driver) {
 		this.driver = driver;
@@ -183,5 +185,16 @@ public class SubCategoryPage {
 		String result = generalutility.getCssValue(resetIcon, "font-size");
 		return result;
 	}
-
+	
+	public String getStatusOfSearchOutput(String category, String subCategory) {
+		clickOnSubCategorySearchIcon();
+		CategoryField.sendKeys(category);
+		subCategoryField.sendKeys(subCategory);
+		SearchField.click();
+		return statusField.getText();	
+	}
+	public void addNewSubCategory()
+	{
+		
+	}
 }
