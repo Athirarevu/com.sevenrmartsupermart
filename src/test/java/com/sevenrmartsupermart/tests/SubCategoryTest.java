@@ -23,7 +23,6 @@ public class SubCategoryTest extends Base {
 	public void subCategoryPageVerification() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
-		loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
 		String text = subcategorypage.clickOnSubCategorySearchIcon();
 		System.out.println(text);
@@ -34,10 +33,8 @@ public class SubCategoryTest extends Base {
 	@Test
 	public void verificationOfSearchButton() {
 		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		subcategorypage = new SubCategoryPage(driver);
-		loginpage.login();
-		homepage.clickOnSubCategory();
+		homepage =loginpage.login();
+		subcategorypage = homepage.clickOnSubCategory();		
 		subcategorypage.clickOnSubCategorySearchIcon();
 		subcategorypage.SearchForSubcategory("Appliances", "phone");
 		List<String> actualResult = new ArrayList<String>();
@@ -52,10 +49,8 @@ public class SubCategoryTest extends Base {
 	@Test
 	public void VerifySearchResult() {
 		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		subcategorypage = new SubCategoryPage(driver);
-		loginpage.login();
-		homepage.clickOnSubCategory();
+		homepage =loginpage.login();
+		subcategorypage = homepage.clickOnSubCategory();		
 		subcategorypage.clickOnSubCategorySearchIcon();
 		subcategorypage.SearchForSubcategory("Electronics", "phone");
 		List<String> actualResult = new ArrayList<String>();
@@ -70,10 +65,8 @@ public class SubCategoryTest extends Base {
 	@Test(dataProvider = "subCategory", dataProviderClass = Data_Provider.class)
 	public void verifySearchResultByDataProvider(String category, String subCategory) {
 		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		subcategorypage = new SubCategoryPage(driver);
-		loginpage.login();
-		homepage.clickOnSubCategory();
+		homepage =loginpage.login();
+		subcategorypage = homepage.clickOnSubCategory();		
 		subcategorypage.clickOnSubCategorySearchIcon();
 		boolean pageNumber = subcategorypage.SearchForSubcategoryByDataProvider(category, subCategory);
 		Assert.assertEquals(pageNumber, true);
@@ -133,21 +126,15 @@ public class SubCategoryTest extends Base {
 	@Test
 	public void verifyCSSPropertyOfNewIcon() {
 		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		subcategorypage = new SubCategoryPage(driver);
-		loginpage.login();
-		homepage.clickOnSubCategory();
+		homepage =loginpage.login();
+		subcategorypage = homepage.clickOnSubCategory();
 		String backgroudcolor = subcategorypage.getBackgroundColorOfNewIcon();
-		// System.out.println(backgroudcolor);
 		String expectedbgcolor = "rgba(220, 53, 69, 1)";
 		String color = subcategorypage.toCheckColorOfNewButton();
-		// System.out.println(color);
 		String expectedcolor = "rgba(255, 255, 255, 1)";
 		String fontStyle = subcategorypage.getFontStyleOfNewIcon();
-		// System.out.println(fontStyle);
 		String expectedfontStyle = "normal";
 		String fontSize = subcategorypage.getFontSizeOfNewButton();
-		// System.out.println(fontSize);
 		String expectedFontSize = "16px";
 		softassert.assertEquals(backgroudcolor, expectedbgcolor);
 		softassert.assertEquals(color, expectedcolor);
@@ -159,21 +146,19 @@ public class SubCategoryTest extends Base {
 	@Test
 	public void verifyCSSPropertyOfSearchButton() {
 		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		subcategorypage = new SubCategoryPage(driver);
-		loginpage.login();
-		homepage.clickOnSubCategory();
+		homepage =loginpage.login();
+		subcategorypage = homepage.clickOnSubCategory();
 		String backgroudcolor = subcategorypage.getBackgroundColorOfSearchIcon();
-		// System.out.println(backgroudcolor);
+		System.out.println(backgroudcolor);
 		String expectedbgcolor = "rgba(220, 53, 69, 1)";
 		String color = subcategorypage.toCheckColorOfSearchButton();
-		// System.out.println(color);
+		System.out.println(color);
 		String expectedcolor = "rgba(255, 255, 255, 1)";
 		String fontStyle = subcategorypage.getFontStyleOfSearchIcon();
-		// System.out.println(fontStyle);
+		System.out.println(fontStyle);
 		String expectedfontStyle = "normal";
 		String fontSize = subcategorypage.getFontSizeOfSearchButton();
-		// System.out.println(fontSize);
+		System.out.println(fontSize);
 		String expectedFontSize = "16px";
 		softassert.assertEquals(backgroudcolor, expectedbgcolor);
 		softassert.assertEquals(color, expectedcolor);
@@ -185,10 +170,8 @@ public class SubCategoryTest extends Base {
 	@Test
 	public void verifyCSSPropertyOfResetButton() {
 		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		subcategorypage = new SubCategoryPage(driver);
-		loginpage.login();
-		homepage.clickOnSubCategory();
+		homepage =loginpage.login();
+		subcategorypage = homepage.clickOnSubCategory();
 		String backgroudcolor = subcategorypage.getBackgroundColorOfResetIcon();
 		String expectedbgcolor = "rgba(255, 193, 7, 1)";
 		String color = subcategorypage.toCheckColorOfResetButton();
