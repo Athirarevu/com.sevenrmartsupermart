@@ -29,9 +29,11 @@ public class HomeTest extends Base{
 		subcategorypage=new SubCategoryPage(driver);
 		loginpage.login();
 		homepage.clickOnSubCategory();
-		String text = subcategorypage.clickOnSubCategorySearchIcon();
-		System.out.println(text);
+		subcategorypage.clickOnSubCategorySearchIcon();	
+		String text=subcategorypage.getHeadingOfSubCategoryPage();
 		String expectedText = "List Sub Categories";
-		Assert.assertEquals(text, expectedText);			
+		Assert.assertEquals(text, expectedText);
 	}
+	
+
 }

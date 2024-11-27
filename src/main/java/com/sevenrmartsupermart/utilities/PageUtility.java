@@ -1,5 +1,6 @@
 package com.sevenrmartsupermart.utilities;
 
+import java.io.File;
 import java.io.FileInputStream;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -31,6 +32,12 @@ public class PageUtility {
 	{
 		Select select = new Select(element);
 		select.selectByVisibleText(visibleText);
+	}
+	
+	public void uploadImage(WebElement element)
+	{
+		File file= new File(Constants.IMAGE_FILE_PATH);
+		element.sendKeys(file.getAbsolutePath());
 	}
 
 	public void mouseDoubleClick(WebElement element) {

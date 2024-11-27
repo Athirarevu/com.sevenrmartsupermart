@@ -12,8 +12,8 @@ import com.sevenrmartsupermart.utilities.WaitUtility;
 
 public class SubCategoryPage {
 	WebDriver driver;
-	WaitUtility waitutility= new WaitUtility(driver);
-	
+	WaitUtility waitutility = new WaitUtility(driver);
+
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
 	private WebElement subCategorySearchField;
 	@FindBy(xpath = "//select[@class='form-control selectpicker']")
@@ -30,12 +30,24 @@ public class SubCategoryPage {
 	private List<WebElement> searchTable;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	private WebElement NewIcon;
-	@FindBy(xpath= "//h1[@class='m-0 text-dark']")
+	@FindBy(xpath = "//h1[@class='m-0 text-dark']")
 	private WebElement headingField;
-	@FindBy(xpath="//nav[@aria-label='Page navigation']")
+	@FindBy(xpath = "//nav[@aria-label='Page navigation']")
 	private WebElement pageNavigationField;
-	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
 	private WebElement statusField;
+	@FindBy(xpath = "//select[@class='form-control selectpicker']")
+	private WebElement newCategoryField;
+	@FindBy(xpath = "//input[@class='form-control']")
+	private WebElement newSubCategoryField;
+	@FindBy(xpath = "//input[@name='main_img']")
+	private WebElement imageField;
+	@FindBy(xpath = "//button[@name='create']")
+	private WebElement saveButton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']//h5[contains(text(),' Alert!')]")
+	private WebElement newAlertMessage;
+	@FindBy(xpath = "//div[@id='imagePreview']")
+	private WebElement imagePreviewField;
 
 	public SubCategoryPage(WebDriver driver) {
 		this.driver = driver;
@@ -53,28 +65,33 @@ public class SubCategoryPage {
 		subCategoryField.sendKeys(subCategory);
 	}
 
-	public String clickOnSubCategorySearchIcon() {
+	public SubCategoryPage clickOnSubCategorySearchIcon() {
 		subCategorySearchField.click();
-		return headingField.getText();
+		return this;
+	}
+	
+	public String getHeadingOfSubCategoryPage() {
+		clickOnSubCategorySearchIcon();
+		return headingField.getText();		
 	}
 
-	public void SearchForSubcategory(String category, String subCategory) {
+	public SubCategoryPage SearchForSubcategory(String category, String subCategory) {
 		clickOnSubCategorySearchIcon();
 		CategoryField.sendKeys(category);
 		subCategoryField.sendKeys(subCategory);
-		SearchField.click();		
+		SearchField.click();
+		return this;
 	}
-	
-	public boolean SearchForSubcategoryByDataProvider(String category, String subCategory) {
+
+	public boolean searchForSubcategoryByDataProvider(String category, String subCategory) {
 		clickOnSubCategorySearchIcon();
 		CategoryField.sendKeys(category);
 		subCategoryField.sendKeys(subCategory);
 		SearchField.click();
 		return pageNavigationField.isDisplayed();
 	}
-		
-	public String getNoResultOutput(String category, String subCategory)
-	{
+
+	public String getNoResultOutput(String category, String subCategory) {
 		clickOnSubCategorySearchIcon();
 		CategoryField.sendKeys(category);
 		subCategoryField.sendKeys(subCategory);
@@ -138,6 +155,7 @@ public class SubCategoryPage {
 		String result = generalutility.getCssValue(SearchField, "font-size");
 		return result;
 	}
+
 	public String getBackgroundColorOfNewIcon() {
 		GeneralUtility generalutility = new GeneralUtility();
 		String result = generalutility.getCssValue(NewIcon, "background-color");
@@ -161,7 +179,7 @@ public class SubCategoryPage {
 		String result = generalutility.getCssValue(NewIcon, "font-size");
 		return result;
 	}
-	
+
 	public String getBackgroundColorOfResetIcon() {
 		GeneralUtility generalutility = new GeneralUtility();
 		String result = generalutility.getCssValue(resetIcon, "background-color");
@@ -185,14 +203,36 @@ public class SubCategoryPage {
 		String result = generalutility.getCssValue(resetIcon, "font-size");
 		return result;
 	}
-	
+
 	public String getStatusOfSearchOutput(String category, String subCategory) {
 		clickOnSubCategorySearchIcon();
 		CategoryField.sendKeys(category);
 		subCategoryField.sendKeys(subCategory);
 		SearchField.click();
-		return statusField.getText();	
-		
+		return statusField.getText();
 	}
-	
+
+	public String createNewSubCategory(String category, String subCategory) {
+		PageUtility pageutility = new PageUtility(driver);
+		NewIcon.click();
+		pageutility.select_ByVisibleText(newCategoryField, category);
+		newCategoryField.sendKeys(category);
+		newSubCategoryField.click();
+		newSubCategoryField.sendKeys(subCategory);
+		saveButton.click();
+		waitutility.waitForElementToBeVisible(newAlertMessage, 20);
+		return newAlertMessage.getText();
+	}
+
+	public boolean uploadImage(String category, String subCategory) {
+		PageUtility pageutility = new PageUtility(driver);
+		NewIcon.click();
+		pageutility.select_ByVisibleText(newCategoryField, category);
+		newCategoryField.sendKeys(category);
+		newSubCategoryField.click();
+		newSubCategoryField.sendKeys(subCategory);
+		pageutility.uploadImage(imageField);
+		return imagePreviewField.isDisplayed();
+
+	}
 }
