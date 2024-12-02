@@ -74,9 +74,9 @@ public class LoginPage {
 		clickOnSignInButton();
 		return AlertMessage.getText();
 	}
-	
-	public boolean checkSignInButtonEnabled(){
+
+	public boolean checkSignInButtonEnabled() {
 		return signINButton.isEnabled();
 	}
-	
+
 }

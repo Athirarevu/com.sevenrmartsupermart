@@ -69,10 +69,10 @@ public class SubCategoryPage {
 		subCategorySearchField.click();
 		return this;
 	}
-	
+
 	public String getHeadingOfSubCategoryPage() {
 		clickOnSubCategorySearchIcon();
-		return headingField.getText();		
+		return headingField.getText();
 	}
 
 	public SubCategoryPage SearchForSubcategory(String category, String subCategory) {

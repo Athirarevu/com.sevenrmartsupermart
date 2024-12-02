@@ -19,7 +19,6 @@ public class SubCategoryTest extends Base {
 	SubCategoryPage subcategorypage;
 	SoftAssert softassert = new SoftAssert();
 
-
 	@Test
 	public void verificationOfSearchButton() {
 		loginpage = new LoginPage(driver);
@@ -101,7 +100,7 @@ public class SubCategoryTest extends Base {
 		System.out.println("Message Displayed is " + message);
 		Assert.assertEquals(message, ".........RESULT NOT FOUND.......");
 	}
-	
+
 	@Test
 	public void verifyRandomNamesInSubCategoryList() {
 		loginpage = new LoginPage(driver);
