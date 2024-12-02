@@ -15,8 +15,17 @@ public class LoginTest extends Base {
 	HomePage homepage;
 	SubCategoryPage subcategorypage;
 
-	@Test(groups = "smoke")
+	@Test(groups = "regression")
 	public void verifyAdminUserLogin() {
+		loginpage = new LoginPage(driver);
+		homepage = new HomePage(driver);
+		loginpage.login("admin", "admin");
+		String titleOfHomePage = homepage.getHeadingOfHomePage();
+		Assert.assertEquals(titleOfHomePage, "7rmart supermarket");
+	}
+	
+	@Test(groups = "smoke")
+	public void verifyAdminUserLoginByExcelData() {
 		excelreader.setExcelFile("LoginData", "Result");
 		String usernameData = excelreader.getCellData(1, 0);
 		String passwordData = excelreader.getCellData(1, 1);
@@ -28,7 +37,7 @@ public class LoginTest extends Base {
 		Assert.assertEquals(actualProfileName, expectedProfileName);
 	}
 
-	@Test
+	@Test(groups = "sanity")
 	public void verifyLoginWithoutParameter() {
 		loginpage = new LoginPage(driver);
 		homepage = new HomePage(driver);

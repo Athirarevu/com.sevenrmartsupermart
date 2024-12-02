@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -16,6 +17,7 @@ public class LoginPage {
 
 	@FindBy(xpath = "//input[@name='username']")
 	private WebElement userNameField;
+	@CacheLookup
 	@FindBy(xpath = "//input[@name='password']")
 	private WebElement passwordField;
 	@FindBy(xpath = "//button[@class='btn btn-dark btn-block']")

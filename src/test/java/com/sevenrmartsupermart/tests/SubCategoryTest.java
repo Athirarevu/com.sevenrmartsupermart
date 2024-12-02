@@ -20,12 +20,12 @@ public class SubCategoryTest extends Base {
 	SoftAssert softassert = new SoftAssert();
 
 	@Test
-	public void verificationOfSearchButton() {
+	public void verificationOfSearchFunctionality() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
 		subcategorypage.clickOnSubCategorySearchIcon();
-		subcategorypage.SearchForSubcategory("Appliances", "phone");
+		subcategorypage.searchForSubcategory("Appliances", "phone");
 		List<String> actualResult = new ArrayList<String>();
 		actualResult = subcategorypage.getSearchResult("Appliances");
 		List<String> subList = actualResult.subList(1, 2);
@@ -40,7 +40,8 @@ public class SubCategoryTest extends Base {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
-		String alert = subcategorypage.createNewSubCategory("Vegetables", "potato");
+		subcategorypage.createNewSubCategory("Vegetables", "potato");
+		String alert = subcategorypage.getAlertMessage();
 		System.out.println(alert);
 		Assert.assertEquals(alert, "Alert!");
 	}
@@ -60,7 +61,7 @@ public class SubCategoryTest extends Base {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
-		subcategorypage.clickOnSubCategorySearchIcon().SearchForSubcategory("Electronics", "phone");
+		subcategorypage.clickOnSubCategorySearchIcon().searchForSubcategory("Electronics", "phone");
 		List<String> actualResult = new ArrayList<String>();
 		actualResult = subcategorypage.getSearchResult("Electronics");
 		List<String> subList = actualResult.subList(1, 2);
@@ -76,8 +77,8 @@ public class SubCategoryTest extends Base {
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
 		subcategorypage.clickOnSubCategorySearchIcon();
-		boolean pageNumber = subcategorypage.searchForSubcategoryByDataProvider(category, subCategory);
-		Assert.assertEquals(pageNumber, true);
+		boolean pageNumberIsPresentOrNot = subcategorypage.searchForSubcategoryByDataProvider(category, subCategory);
+		Assert.assertTrue(pageNumberIsPresentOrNot);
 	}
 
 	@Test
@@ -191,7 +192,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test
-	public void verifyStatusOfSerchResult() {
+	public void verifyStatusOfSerchResultEitherOrInactive() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();

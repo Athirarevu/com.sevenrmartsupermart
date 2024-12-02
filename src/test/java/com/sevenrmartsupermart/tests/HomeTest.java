@@ -14,15 +14,6 @@ public class HomeTest extends Base {
 	HomePage homepage;
 	SubCategoryPage subcategorypage;
 
-	@Test(priority=1)
-	public void verifyAdminUserLogin() {
-		loginpage = new LoginPage(driver);
-		homepage = new HomePage(driver);
-		loginpage.login("admin", "admin");
-		String titleOfHomePage = homepage.getHeadingOfHomePage();
-		Assert.assertEquals(titleOfHomePage, "7rmart supermarket");
-	}
-
 	@Test(priority=3)
 	public void verifySubCategoryPage() {
 		loginpage = new LoginPage(driver);
@@ -45,7 +36,7 @@ public class HomeTest extends Base {
 		Assert.assertTrue(statusOfLoginPage);
 	}
 
-	@Test
+	@Test(priority=1)
 	public void verifyAdminProfileIsDisplayed() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
@@ -53,7 +44,7 @@ public class HomeTest extends Base {
 		Assert.assertTrue(imageDisplayedStatus);
 	}
 
-	@Test
+	@Test(priority=4)
 	public void verifyChangePasswordFunctionality() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();

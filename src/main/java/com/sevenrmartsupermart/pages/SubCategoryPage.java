@@ -75,7 +75,7 @@ public class SubCategoryPage {
 		return headingField.getText();
 	}
 
-	public SubCategoryPage SearchForSubcategory(String category, String subCategory) {
+	public SubCategoryPage searchForSubcategory(String category, String subCategory) {
 		clickOnSubCategorySearchIcon();
 		CategoryField.sendKeys(category);
 		subCategoryField.sendKeys(subCategory);
@@ -212,14 +212,17 @@ public class SubCategoryPage {
 		return statusField.getText();
 	}
 
-	public String createNewSubCategory(String category, String subCategory) {
+	public void createNewSubCategory(String category, String subCategory) {
 		PageUtility pageutility = new PageUtility(driver);
 		NewIcon.click();
 		pageutility.select_ByVisibleText(newCategoryField, category);
 		newCategoryField.sendKeys(category);
 		newSubCategoryField.click();
 		newSubCategoryField.sendKeys(subCategory);
-		saveButton.click();
+		saveButton.click();		
+	}
+	
+	public String getAlertMessage() {
 		waitutility.waitForElementToBeVisible(newAlertMessage, 20);
 		return newAlertMessage.getText();
 	}
