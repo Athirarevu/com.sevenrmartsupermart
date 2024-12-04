@@ -36,7 +36,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test
-	public void createNewSubCategory() {
+	public void createNewSubCategoryAndCheckAlertIsPresentOrNot() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
@@ -47,7 +47,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test
-	public void createNewSubCategoryWithImage() {
+	public void createNewSubCategoryAndCheckImageIsUploadedOrNot() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
@@ -57,7 +57,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test
-	public void VerifySearchResult() {
+	public void VerifySearchButtonFunctionalityWithResult() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
@@ -72,7 +72,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test(dataProvider = "subCategory", dataProviderClass = Data_Provider.class)
-	public void verifySearchResultByDataProvider(String category, String subCategory) {
+	public void verifySearchButtonFunctionalityWithResultByDataProvider(String category, String subCategory) {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
@@ -82,7 +82,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test
-	public void verifySearchWithInvalidData() {
+	public void verifySearchButtonFunctionalityWithWithInvalidData() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
@@ -92,7 +92,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test
-	public void verifySearchResultMessage() {
+	public void verifySearchButtonFunctionalityWithResultAndVerifyMessage() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
@@ -113,7 +113,7 @@ public class SubCategoryTest extends Base {
 	}
 
 	@Test
-	public void checkResetIconStatus() {
+	public void checkResetIconIsEnabledOrNot() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();

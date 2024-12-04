@@ -18,7 +18,7 @@ public class AdminUserTest extends Base {
 	AdminUserPage adminuserpage;
 
 	@Test
-	public void verifyAdminUserPage() {
+	public void verifyAdminUserPageWithTitleIsPresentOrNot() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		adminuserpage = homepage.clickOnAdminUserMenu();
@@ -28,7 +28,7 @@ public class AdminUserTest extends Base {
 	}
 
 	@Test
-	public void verifyNewButtonFunctionality() {
+	public void verifyNewButtonFunctionalityByCheckingTheCssPropertyOfAlertMessage() {
 		excelreader.setExcelFile("AdminUserData", "data");
 		String newUserNameData = excelreader.getCellData(0, 0);
 		String newPasswordData = excelreader.getCellData(0, 1);
@@ -41,7 +41,7 @@ public class AdminUserTest extends Base {
 	}
 
 	@Test
-	public void verifyPossibilityOfRepetionOfSameAdminUser() {
+	public void verifyPossibilityOfRepetionOfSameAdminUserByCheckingTheCssPropertyOfAlertMessage() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		adminuserpage = homepage.clickOnAdminUserMenu();
@@ -51,7 +51,7 @@ public class AdminUserTest extends Base {
 	}
 
 	@Test
-	public void verifydeleteButtonFunctionality() {
+	public void verifydeleteButtonFunctionalityByCheckingStatusOfAdminUserPresentInList() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		adminuserpage = homepage.clickOnAdminUserMenu();
@@ -61,7 +61,7 @@ public class AdminUserTest extends Base {
 	}
 
 	@Test
-	public void verifyFunctionalityOfUpdateButton() {
+	public void verifyFunctionalityOfUpdateButtonByCheckingStatusOfAdminUserPresentInList() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		adminuserpage = homepage.clickOnAdminUserMenu();

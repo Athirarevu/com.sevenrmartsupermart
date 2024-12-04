@@ -16,7 +16,7 @@ public class LoginTest extends Base {
 	SubCategoryPage subcategorypage;
 
 	@Test(groups = "regression")
-	public void verifyAdminUserLogin() {
+	public void verifyAdminUserLoginFunctionality() {
 		loginpage = new LoginPage(driver);
 		homepage = new HomePage(driver);
 		loginpage.login("admin", "admin");
@@ -53,7 +53,7 @@ public class LoginTest extends Base {
 	}
 
 	@Test(groups = { "smoke", "regression" })
-	public void loginWithWrongData() {
+	public void verfiLoginWithWrongData() {
 		loginpage = new LoginPage(driver);
 		String actualStatus = loginpage.checkLoginWithWrongInputs("admin", "new");
 		System.out.println(actualStatus);
@@ -62,7 +62,7 @@ public class LoginTest extends Base {
 	}
 
 	@Test(retryAnalyzer = com.sevenrmartsupermart.listeners.RetryAnalyzer.class)
-	public void checkStatusOfSignInButton() {
+	public void checkStatusOfSignInButtonIsEnabledOrNot() {
 		loginpage = new LoginPage(driver);
 		boolean Status = loginpage.checkSignInButtonEnabled();
 		Assert.assertFalse(Status);

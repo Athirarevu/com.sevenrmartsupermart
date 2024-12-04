@@ -15,20 +15,20 @@ public class HomeTest extends Base {
 	SubCategoryPage subcategorypage;
 
 	@Test(priority=3)
-	public void verifySubCategoryPage() {
+	public void verifySubCategoryPageWithTitleDisplayed() {
 		loginpage = new LoginPage(driver);
 		homepage = new HomePage(driver);
 		subcategorypage = new SubCategoryPage(driver);
 		loginpage.login();
 		homepage.clickOnSubCategory();
 		subcategorypage.clickOnSubCategorySearchIcon();
-		String text = subcategorypage.getHeadingOfSubCategoryPage();
-		String expectedText = "List Sub Categories";
-		Assert.assertEquals(text, expectedText);
+		String title = subcategorypage.getHeadingOfSubCategoryPage();
+		String expectedTitle = "List Sub Categories";
+		Assert.assertEquals(title, expectedTitle);
 	}
 
 	@Test(priority=2)
-	public void verifyLogOutFunctionality() {
+	public void verifyLogOutFunctionalityWithStatusOfNewLoginPage() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		homepage.getLogoutFromApplication();
