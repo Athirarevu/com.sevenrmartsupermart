@@ -1,13 +1,12 @@
 package com.sevenrmartsupermart.tests;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.util.ArrayList;
 import java.util.List;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import com.sevenrmartsupermart.base.Base;
-import com.sevenrmartsupermart.constants.Data_Provider;
+import com.sevenrmartsupermart.pages.Data_Provider;
 import com.sevenrmartsupermart.pages.HomePage;
 import com.sevenrmartsupermart.pages.LoginPage;
 import com.sevenrmartsupermart.pages.SubCategoryPage;
@@ -20,7 +19,7 @@ public class SubCategoryTest extends Base {
 	SoftAssert softassert = new SoftAssert();
 
 	@Test
-	public void verificationOfSearchFunctionality() {
+	public void verificationOfSearchFunctionalityUsingList() {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.login();
 		subcategorypage = homepage.clickOnSubCategory();
